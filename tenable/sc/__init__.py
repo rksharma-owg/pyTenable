@@ -20,6 +20,7 @@ Tenable Security Center
 
     base
     accept_risks
+    agent_scans
     alerts
     analysis
     asset_lists
@@ -60,6 +61,7 @@ from tenable.base.platform import APIPlatform
 from tenable.errors import APIError, ConnectionError
 
 from .accept_risks import AcceptRiskAPI
+from .agent_scans import AgentScanAPI
 from .alerts import AlertAPI
 from .analysis import AnalysisAPI
 from .asset_lists import AssetListAPI
@@ -426,6 +428,14 @@ class TenableSC(APIPlatform):  # noqa PLR0904
         :doc:`Tenable Security Center Accept Risks APIs <accept_risks>`.
         """
         return AcceptRiskAPI(self)
+
+    @property
+    def agent_scans(self):
+        """
+        The interface object for the
+        :doc:`Tenable Security Center Agent Scan APIs <agent_scans>`.
+        """
+        return AgentScanAPI(self)
 
     @property
     def alerts(self):
